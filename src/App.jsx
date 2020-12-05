@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import FeedbackOptions from './components/Feedback/FeedbackOptions';
+import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Section from './components/Section/Section';
 import Statistics from './components/Statistics/Statistics';
 import Notification from './components/Notification/Notification';
@@ -11,9 +11,9 @@ class App extends Component {
         bad: 0,
     };
 
-    setItem = item => {
+    setItem = option => {
         this.setState(prevState => ({
-      [item]: prevState[item] + 1,
+      [option]: prevState[option] + 1,
     }));
     }
 
@@ -33,7 +33,7 @@ class App extends Component {
             <>
              <Section title="Please leave feedback">
                <FeedbackOptions
-                options={this.state}
+                options={['good', 'neutral', 'bad']}
                 onLeaveFeedback={this.setItem}
                     />
                     {this.countTotalFeedback() === 0 ?
